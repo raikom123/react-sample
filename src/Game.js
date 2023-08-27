@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Game.css";
 
 /**
@@ -204,20 +205,25 @@ function Game() {
   const lines = winner ? winner.lines : Array(3).fill(null);
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board
-          squares={current.squares}
-          lines={lines}
-          onClick={(row, col) => handleClick(row, col)}
-        />
+    <>
+      <div>
+        <Link to={"/"}>ホームに戻る</Link>
       </div>
-      <div className="game-info">
-        <div>{status}</div>
-        <Toggle isToggleOn={isToggleOn} onClick={() => onToggleClick()} />
-        <ol>{moves}</ol>
+      <div className="game">
+        <div className="game-board">
+          <Board
+            squares={current.squares}
+            lines={lines}
+            onClick={(row, col) => handleClick(row, col)}
+          />
+        </div>
+        <div className="game-info">
+          <div>{status}</div>
+          <Toggle isToggleOn={isToggleOn} onClick={() => onToggleClick()} />
+          <ol>{moves}</ol>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
